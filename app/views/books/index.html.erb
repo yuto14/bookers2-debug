@@ -32,6 +32,7 @@
 					</td>
 					<td><%= link_to book.title, book, class: "book_#{book.id}" %></td>
 					<td><%= book.body %></td>
+<<<<<<< HEAD
 					 <% if book.favorited_by?(current_user) %>
 					<td><%= link_to book_favorites_path(book),method: :delete do %>
 						<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
@@ -44,6 +45,8 @@
 						<%= book.favorites.count %></td>
 					<% end %>
 					<td>コメント数:<%= book.book_comments.count %></td>
+=======
+>>>>>>> origin/master
 				</tr>
 				<% end %>
 			</tbody>
