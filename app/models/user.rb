@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable,:validatable
 
+<<<<<<< HEAD
   has_many :books, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
@@ -27,9 +28,22 @@ class User < ApplicationRecord
   def following?(user) #フォロー確認を行う
     following_user.include?(user)
   end
+=======
+<<<<<<< HEAD
+  has_many :books, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :book_comments, dependent: :destroy
+=======
+  has_many :books
+>>>>>>> origin/master
+>>>>>>> origin/master
   attachment :profile_image, destroy: false
 
   #バリデーションは該当するモデルに設定する。エラーにする条件を設定できる。
   validates :name, length: {maximum: 20, minimum: 2}
   validates :introduction, length: {maximum: 50}
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> origin/master

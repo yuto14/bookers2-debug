@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_06_03_123844) do
+=======
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 2020_06_03_055845) do
+>>>>>>> origin/master
 
   create_table "book_comments", force: :cascade do |t|
     t.integer "user_id"
@@ -19,6 +24,12 @@ ActiveRecord::Schema.define(version: 2020_06_03_123844) do
     t.datetime "updated_at", null: false
     t.text "comment"
   end
+<<<<<<< HEAD
+=======
+=======
+ActiveRecord::Schema.define(version: 2020_06_02_072737) do
+>>>>>>> origin/master
+>>>>>>> origin/master
 
   create_table "books", force: :cascade do |t|
     t.string "title"
@@ -28,6 +39,10 @@ ActiveRecord::Schema.define(version: 2020_06_03_123844) do
     t.datetime "updated_at", null: false
   end
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "book_id"
@@ -35,6 +50,7 @@ ActiveRecord::Schema.define(version: 2020_06_03_123844) do
     t.datetime "updated_at", null: false
   end
 
+<<<<<<< HEAD
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
@@ -42,6 +58,10 @@ ActiveRecord::Schema.define(version: 2020_06_03_123844) do
     t.datetime "updated_at", null: false
   end
 
+=======
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

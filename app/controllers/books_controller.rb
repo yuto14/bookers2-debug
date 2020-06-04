@@ -5,7 +5,14 @@ class BooksController < ApplicationController
   	@book = Book.find(params[:id])
     @user = @book.user
     @book1 = Book.new
+<<<<<<< HEAD
     @book_comment = BookComment.new
+=======
+<<<<<<< HEAD
+    @book_comment = BookComment.new
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
   end
 
   def index
