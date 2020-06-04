@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :books do
   	resources :book_comments, only:[:create, :destroy]
     resource :favorites, only:[:create, :destroy]
-
+  end
 
   root 'home#top'
   get 'home/about' => 'home#about'
@@ -22,5 +22,6 @@ Rails.application.routes.draw do
 
   root 'home#top'
   get 'home/about' => 'home#about'
-  end
+
+end
 
