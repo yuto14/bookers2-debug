@@ -28,6 +28,20 @@ class User < ApplicationRecord
     following_user.include?(user)
   end
 
+  def self.search(search, word)
+    if search == "forward_match"
+        @users = User.where(['name LIKE ?', "#{word}%"])
+    elsif search == "backward_match"
+        @users = User.where(['name LIKE ?', "%#{word}"])
+    elsif search == "perfect_match"
+        @users = User.where(['name LIKE ?', "#{word}"])
+    elsif search == "partial_match"
+        @users = User.where(['name LIKE ?', "%#{word}%"])
+    else
+        @users = User.all
+    end
+  end
+
   has_many :books, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
