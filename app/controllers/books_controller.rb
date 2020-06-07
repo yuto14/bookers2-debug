@@ -6,19 +6,19 @@ class BooksController < ApplicationController
     @user = @book.user
     @book1 = Book.new
     @book_comment = BookComment.new
-    @book_comment = BookComment.new
   end
 
   def index
-  	@books = Book.all #一覧表示するためにBookモデルの情報を全てくださいのall
+  	@books = Book.all
     @book = Book.new
   end
 
+
   def create
-  	@book = Book.new(book_params) #Bookモデルのテーブルを使用しているのでbookコントローラで保存する。
+  	@book = Book.new(book_params)
     @book.user_id = current_user.id
-  	if @book.save #入力されたデータをdbに保存する。
-  		redirect_to @book, notice: "successfully created book!"#保存された場合の移動先を指定。
+  	if @book.save
+  		redirect_to @book, notice: "successfully created book!"
   	else
   		@books = Book.all
   		render 'index'
@@ -35,7 +35,7 @@ class BooksController < ApplicationController
   	@book = Book.find(params[:id])
   	if @book.update(book_params)
   		redirect_to @book, notice: "successfully updated book!"
-  	else #if文でエラー発生時と正常時のリンク先を枝分かれにしている。
+  	else
   		render "edit"
   	end
   end

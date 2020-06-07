@@ -16,8 +16,6 @@
     <!--ヘッダーの記述-->
     <div class="container">
         <header class="navbar navbar-fixed-top navbar-inverse">
-          <div class="row">
-            <div class="col-xs-12">
             <nav class="nav navbar-nav navbar-left">
               <span>Bookers</span>
             </nav>
@@ -37,12 +35,9 @@
                 <% end %>
               </ul>
             </nav>
-          </div>
         </header>
 
-          <div class="row">
-            <div class="col-xs-4"></div>
-            <div class="search col-xs-4">
+            <div class="search">
               <% if user_signed_in? %>
                 <%= form_tag(search_path,:method => 'get') do %>
                 <%= text_field_tag :word %>
@@ -52,8 +47,6 @@
                 <% end %>
               <% end %>
             </div>
-            <div class="col-xs-4"></div>
-          </div>
     </div>
     <!--ヘッダーの記述-->
 
