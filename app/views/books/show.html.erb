@@ -16,17 +16,11 @@
 				<tr class="book_<%=@book.id%>">
 					<%= render 'show', book: @book %>
 				</tr>
-
-                <span class="comments_area">
-				<%= render 'comments', book: @book %>
-			    </span>
-
 		</table>
 
-			<%= form_with(model: [@book, @book_comment]) do |f| %>
-			  <%= f.text_area :comment, class:"col-xs-9" %>
-			  <%= f.submit "送信" %>
-			<% end %>
+		<div class="comments_table">
+			<%= render 'comments', book: @book, book_comment: @book_comment %>
+		</div>
 	</div>
 </div>
 
