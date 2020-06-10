@@ -10,12 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2020_06_03_123844) do
-=======
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2020_06_03_055845) do
->>>>>>> origin/master
+ActiveRecord::Schema.define(version: 2020_06_09_014628) do
 
   create_table "book_comments", force: :cascade do |t|
     t.integer "user_id"
@@ -24,12 +19,6 @@ ActiveRecord::Schema.define(version: 2020_06_03_055845) do
     t.datetime "updated_at", null: false
     t.text "comment"
   end
-<<<<<<< HEAD
-=======
-=======
-ActiveRecord::Schema.define(version: 2020_06_02_072737) do
->>>>>>> origin/master
->>>>>>> origin/master
 
   create_table "books", force: :cascade do |t|
     t.string "title"
@@ -39,7 +28,6 @@ ActiveRecord::Schema.define(version: 2020_06_02_072737) do
     t.datetime "updated_at", null: false
   end
 
-
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "book_id"
@@ -47,14 +35,12 @@ ActiveRecord::Schema.define(version: 2020_06_02_072737) do
     t.datetime "updated_at", null: false
   end
 
-
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -72,6 +58,12 @@ ActiveRecord::Schema.define(version: 2020_06_02_072737) do
     t.datetime "updated_at", null: false
     t.text "introduction"
     t.string "profile_image_id"
+    t.string "postal_code"
+    t.string "prefecture_code"
+    t.string "city"
+    t.string "street"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

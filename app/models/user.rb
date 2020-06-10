@@ -18,6 +18,7 @@ class User < ApplicationRecord
   #フォローされる人(followed) は中間テーブル(Relationshipのfollowed)を通じて(through)、 フォローする人(follower) と紐づく
   has_many :follower_user,through: :followed,source: :follower
 
+#フォロー機能
   def follow(user_id) #ユーザーをフォローする
     follower.create(followed_id: user_id)
   end
@@ -27,7 +28,9 @@ class User < ApplicationRecord
   def following?(user) #フォロー確認を行う
     following_user.include?(user)
   end
+#ここまでフォロー機能
 
+#user、book検索機能
   def self.search(search, word)
     if search == "forward_match"
         @users = User.where(['name LIKE ?', "#{word}%"])
@@ -41,6 +44,28 @@ class User < ApplicationRecord
         @users = User.all
     end
   end
+#ここまでuser、book検索機能
+
+#住所検索機能
+  include JpPrefecture
+  jp_prefecture :prefecture_code #prefecture_codeはuserが持っているカラム
+  def prefecture_name #postal_codeからprefecture_name(gem JpPrefectureのカラム)に変換するメソッドを用意する
+    JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
+  end
+  def prefecture_name=(prefecture_name)
+    self.prefecture_code = JpPrefecture::Prefecture.find(name::prefecture_name).code
+  end
+#ここまで住所検索機能
+
+#住所表示機能
+ geocoded_by :address
+ after_validation :geocode
+#上２行でaddressを登録した際にgeocoder(gem)が緯度、経度のカラムにも自動的に値を入れてくれる。
+  geocoded_by :address
+  def address
+    "#{self.prefecture_code}" + "#{self.city}"
+  end
+#ここまで住所表示機能
 
   has_many :books, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -51,5 +76,7 @@ class User < ApplicationRecord
 
   validates :name, length: {maximum: 20, minimum: 2}
   validates :introduction, length: {maximum: 50}
+  validates :postal_code, presence: true
+  validates :city, presence: true
 
 end
